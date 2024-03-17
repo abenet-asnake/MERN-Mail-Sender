@@ -10,6 +10,12 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
 
+// route
+app.get('/',(req, res) => {
+    res.send("This Test For Emailing You");
+
+});
+
  const port=process.env.PORT_NUMBER||3000;
 
  app.listen(port,()=>{

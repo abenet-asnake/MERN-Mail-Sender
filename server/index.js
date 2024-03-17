@@ -8,6 +8,7 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(cors());
 
  const port=process.env.PORT_NUMBER||3000;
 

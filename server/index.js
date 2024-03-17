@@ -1,6 +1,7 @@
 const express= require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const sendEmail = require('./email/sendEmail');
 const dotenv=require('dotenv').config();
 
 const app = express();
@@ -11,8 +12,16 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // route
-app.get('/',(req, res) => {
+app.get('/api/sendemail', async (req, res) => {
     res.send("This Test For Emailing You");
+    const {email} = req.body;
+
+    try {
+        sendEmail
+        
+    } catch (error) {
+        
+    }
 
 });
 

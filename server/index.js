@@ -11,16 +11,27 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
 
+const name="Abel";
+
 // route
-app.get('/api/sendemail', async (req, res) => {
-    res.send("This Test For Emailing You");
+app.post('/api/sendemail', async (req, res) => {
+  
     const {email} = req.body;
 
     try {
-        sendEmail
+        const send_to=email;
+        const sent_from= process.env.EMAIL_USERNAME;
+        const replay_to=email;
+        const subject="This Test Email WellCome";
+        const message=`<h2> Hello ${name} </h2>
+                          <p>Thank you for your register</p> 
+                          <p>Regrads...</p>`
+
+    await sendEmail(subject, message,send_to,sent_from,replay_to);
+    res.status(200).send({success:true, message:"Email sent successfully"});
         
     } catch (error) {
-        
+        res.status(500).json(error.message);
     }
 
 });

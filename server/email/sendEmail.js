@@ -1,6 +1,6 @@
 const nodemailer= require('nodemailer');
 
-const sendEmail= async( (subject, message, send_to, send_from,replay_to) => {
+const sendEmail= async  (subject, message, send_to, sent_from,replay_to) => {
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: "587",
@@ -16,7 +16,7 @@ const sendEmail= async( (subject, message, send_to, send_from,replay_to) => {
       });
       
      const options={
-        from:send_from,
+        from:sent_from,
         to:send_to,
         subject:subject,
         html:message
@@ -33,7 +33,7 @@ const sendEmail= async( (subject, message, send_to, send_from,replay_to) => {
         }
      })
 
-});
+};
 
 
 module.exports =sendEmail;

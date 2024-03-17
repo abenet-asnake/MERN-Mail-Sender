@@ -1,7 +1,7 @@
 const express= require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-               require('dotenv').config();
+const dotenv=require('dotenv').config();
 
 const app = express();
 
@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
- const port=3200;
+ const port=process.env.PORT ||3000;
 
  app.listen(port,()=>{
     console.log(`Server listening on ${port}`);
